@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Converter</title>
+</head>
+<body style = "text-align: center">
+    <h1 style="line-height:40%">Конвертер единиц информации</h1>
+    <p style="line-height:10%">(bits,Byte, KB, MB, GB, TB, PB)</p>
+
+    <form th:method="post" th:action="@{/convert}" style = "margin-top: 6%">
+      <div>
+         <label for="input-from">из :</label>
+         <input type="text" id="input-from" name="from"
+                required pattern="bits|Byte|KB|MB|GB|TB|PB"/>
+
+         <label for="input-to">в :</label>
+         <input type="text" id="input-to" name="to"
+                required pattern="bits|Byte|KB|MB|GB|TB|PB"/>
+
+         <label for="input-quantity">количество :</label>
+         <input type="number" id="input-quantity" name="quantity"
+                 value="1" min="1" max="9999999999999999999999999"/>
+     </div>
+     <br> <br>
+     <button>Результат: </button>
+     <label th:if="${result != null}"> [[${result}]]</label>
+
+    </form>
+</body>
+</html>
+
